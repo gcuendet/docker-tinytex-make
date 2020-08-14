@@ -1,0 +1,13 @@
+version: 2.1
+jobs:
+    build:
+        machine: true
+        steps:
+            - checkout
+            # start proprietary DB using private Docker image
+            # with credentials stored in the UI
+            - run: docker login --username $DOCKER_USER --password $DOCKER_PASSWORD
+            # build the application image
+            - run: docker build -t kipola/tinytex-make -f tinytex-base.docker .
+            # deploy the image
+            - run: docker push kipola/tinytex-make

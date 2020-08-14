@@ -1,0 +1,11 @@
+FROM tinytex-make
+
+RUN apt-get update &&\
+    apt-get install -y --no-install-recommends \
+    fonts-font-awesome && \
+    # Cleanup
+    apt-get autoremove -y && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN tlmgr install enumitem ragged2e ms fancyhdr xifthen ifmtarg setspace fontawesome sourcesanspro tcolorbox pgf environ trimspaces parskip moresize doi lastpage

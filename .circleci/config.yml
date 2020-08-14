@@ -11,3 +11,5 @@ jobs:
             - run: docker build -t kipola/tinytex-make -f tinytex-base.docker .
             # deploy the image
             - run: docker push kipola/tinytex-make
+            - run: docker build -t kipola/tinytex-awesome-cv -f Awesome-CV.docker .
+            - run: docker push kipola/tinytex-awesome-cv
